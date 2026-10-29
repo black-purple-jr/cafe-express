@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -65,13 +66,41 @@ class MainActivity : AppCompatActivity() {
         incrementQuantite(incrementCroissantQuantite, croissantNumber, 6.0, "croissant")
         decrementQantite(decrementCroissantQuantite, croissantNumber, 6.0, "croissant")
 
+
+
+        btnVider.setOnClickListener {
+            cafeNumber.text = "0"
+            theNumber.text = "0"
+            croissantNumber.text = "0"
+            countThe = 0
+            countCafe = 0
+            countCroissant = 0
+            total = 0.0
+            prixTotal.text = "0.0"
+            Toast.makeText(this, "Commande annulée", Toast.LENGTH_SHORT).show()
+        }
+
         btnCommander.setOnClickListener {
-            val intent = Intent(this, RecapActivity::class.java)
-            startActivity(intent)
+            if (edtNomClient.text.toString().trim().isEmpty()) {
+                edtNomClient.requestFocus()
+                edtNomClient.error = "Veuillez entrer votre Nom"
+            } else if (countCroissant == 0 && countCafe == 0 && countThe == 0) {
+                Toast.makeText(this, "Le panier est vide", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Commande faite avec succès", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, RecapActivity::class.java)
+
+                intent.putExtra("NOM_CLIENT", edtNomClient.text.toString())
+                intent.putExtra("QUANTITE_CAFE", countCafe)
+                intent.putExtra("QUANTITE_THE", countThe)
+                intent.putExtra("QUANTITE_CROISSANT", countCroissant)
+                intent.putExtra("PRIX_TOTAL", total)
+                startActivity(intent)
+            }
         }
     }
 
-    fun incrementQuantite (btn: ImageButton, label: TextView, prix: Double, type: String) {
+    fun incrementQuantite(btn: ImageButton, label: TextView, prix: Double, type: String) {
         btn.setOnClickListener {
             var number = label.text.toString().trim().toInt()
             number++
@@ -83,6 +112,7 @@ class MainActivity : AppCompatActivity() {
                 "the" -> countThe++
                 "croissant" -> countCroissant++
             }
+            prixTotal.text = total.toString()
         }
     }
 

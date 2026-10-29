@@ -40,14 +40,107 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lblClient" />
 
-    <Button
-        android:id="@+id/btnModifier"
+    <TextView
+        android:id="@+id/lblThe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Thé"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblCafe" />
+
+    <TextView
+        android:id="@+id/lblCroissant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Croissant"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblThe" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <TextView
+        android:id="@+id/nomClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/lblClient"
+        app:layout_constraintStart_toEndOf="@id/sep"
+        app:layout_constraintTop_toTopOf="@id/lblClient" />
+
+    <TextView
+        android:id="@+id/nombreCafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/lblCafe"
+        app:layout_constraintStart_toEndOf="@id/sep"
+        app:layout_constraintTop_toTopOf="@id/lblCafe" />
+
+    <TextView
+        android:id="@+id/nombreThe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/lblThe"
+        app:layout_constraintStart_toEndOf="@id/sep"
+        app:layout_constraintTop_toTopOf="@id/lblThe" />
+
+    <TextView
+        android:id="@+id/nombreCroissant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/lblCroissant"
+        app:layout_constraintStart_toEndOf="@id/sep"
+        app:layout_constraintTop_toTopOf="@id/lblCroissant" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total : 0 DH"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/btnModifier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblCroissant" />
+
+    <Button
+        android:id="@+id/btnModifier"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
-        android:text="Modifier"
         android:layout_marginBottom="10dp"
+        android:text="Modifier"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnConfirmer"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnConfirmer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="Confirmer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@id/btnModifier" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
