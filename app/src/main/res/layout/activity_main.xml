@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/titrePrincipale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="Café Express"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sousTitre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prise de commande"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titrePrincipale" />
+
+    <TextView
+        android:id="@+id/lblCafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Café"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sousTitre" />
+
+    <TextView
+        android:id="@+id/lblThe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Thé"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblCafe" />
+
+    <TextView
+        android:id="@+id/lblCroissant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Croissant"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblThe" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sep1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <TextView
+        android:id="@+id/lblPrixCafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10 DH"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/lblCafe"
+        app:layout_constraintStart_toStartOf="@id/sep1"
+        app:layout_constraintTop_toBottomOf="@id/sousTitre" />
+
+    <TextView
+        android:id="@+id/lblPrixThe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8 DH"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/lblThe"
+        app:layout_constraintStart_toStartOf="@id/sep1"
+        app:layout_constraintTop_toBottomOf="@id/lblPrixCafe" />
+
+    <TextView
+        android:id="@+id/lblPrixCroissant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6 DH"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/lblCroissant"
+        app:layout_constraintStart_toStartOf="@id/sep1"
+        app:layout_constraintTop_toBottomOf="@id/lblPrixThe" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sep2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <ImageButton
+        android:id="@+id/btnMoinsCafe"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@null"
+        android:src="@drawable/ic_minus"
+        app:layout_constraintBottom_toBottomOf="@id/lblCafe"
+        app:layout_constraintEnd_toStartOf="@id/txtCountCafe"
+        app:layout_constraintTop_toBottomOf="@id/sousTitre"
+        app:layout_constraintTop_toTopOf="@id/lblCafe"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/txtCountCafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="0"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/lblCafe"
+        app:layout_constraintEnd_toStartOf="@id/btnPlusCafe"
+        app:layout_constraintTop_toTopOf="@id/lblCafe" />
+
+    <ImageButton
+        android:id="@+id/btnPlusCafe"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@null"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintBottom_toBottomOf="@id/lblCafe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sousTitre"
+        app:layout_constraintTop_toTopOf="@id/lblCafe"
+        app:tint="@color/black" />
+
+    <ImageButton
+        android:id="@+id/btnMoinsThe"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@null"
+        android:src="@drawable/ic_minus"
+        app:layout_constraintBottom_toBottomOf="@id/lblThe"
+        app:layout_constraintEnd_toStartOf="@id/txtCountThe"
+        app:layout_constraintTop_toBottomOf="@id/lblCafe"
+        app:layout_constraintTop_toTopOf="@id/lblThe"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/txtCountThe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="0"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/lblThe"
+        app:layout_constraintEnd_toStartOf="@id/btnPlusThe"
+        app:layout_constraintTop_toTopOf="@id/lblThe" />
+
+    <ImageButton
+        android:id="@+id/btnPlusThe"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@null"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintBottom_toBottomOf="@id/lblThe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lblThe"
+        app:tint="@color/black" />
+
+    <ImageButton
+        android:id="@+id/btnMoinsCroissant"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@null"
+        android:src="@drawable/ic_minus"
+        app:layout_constraintBottom_toBottomOf="@id/lblCroissant"
+        app:layout_constraintEnd_toStartOf="@id/txtCountCroissant"
+        app:layout_constraintTop_toBottomOf="@id/lblThe"
+        app:layout_constraintTop_toTopOf="@id/lblCroissant"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/txtCountCroissant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:text="0"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/lblCroissant"
+        app:layout_constraintEnd_toStartOf="@id/btnPlusCroissant"
+        app:layout_constraintTop_toTopOf="@id/lblCroissant" />
+
+    <ImageButton
+        android:id="@+id/btnPlusCroissant"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@null"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintBottom_toBottomOf="@id/lblCroissant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/lblCroissant"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/lblClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="70dp"
+        android:text="Nom du client"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblCroissant" />
+
+    <EditText
+        android:id="@+id/edtNomClient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="5dp"
+        android:hint="Entrer votre Nom"
+        app:layout_constraintTop_toBottomOf="@id/lblClient" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/btnVider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtNomClient">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total : "
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/prixTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="0.0"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" DH"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnVider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Vider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnCommander"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnCommander"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Commander"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@id/btnVider" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
