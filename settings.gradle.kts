@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "cafe-express"
+rootProject.name = "Café Express"
 include(":app")
  
