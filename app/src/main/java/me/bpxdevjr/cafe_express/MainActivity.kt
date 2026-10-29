@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var btnVider: Button
     private lateinit var btnCommander: Button
-    private var total: Double = 0.0
 
-    private var countCafe = 0
-    private var countThe = 0
-    private var countCroissant = 0
+    private var total: Double = 0.0
+    private var countCafe: Int = 0
+    private var countThe: Int = 0
+    private var countCroissant: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
