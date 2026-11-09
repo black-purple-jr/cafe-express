@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var incrementCroissantQuantite: ImageButton
     private lateinit var croissantNumber: TextView
 
+    private lateinit var personaliser: Button
+
     private lateinit var edtNomClient: EditText
     private lateinit var prixTotal: TextView
 
@@ -51,6 +53,8 @@ class MainActivity : AppCompatActivity() {
         incrementCroissantQuantite = findViewById(R.id.btnPlusCroissant)
         croissantNumber = findViewById(R.id.txtCountCroissant)
 
+        personaliser = findViewById(R.id.btnPersonaliser)
+
         edtNomClient = findViewById(R.id.edtNomClient)
         prixTotal = findViewById(R.id.prixTotal)
 
@@ -66,7 +70,10 @@ class MainActivity : AppCompatActivity() {
         incrementQuantite(incrementCroissantQuantite, croissantNumber, 6.0, "croissant")
         decrementQantite(decrementCroissantQuantite, croissantNumber, 6.0, "croissant")
 
-
+        personaliser.setOnClickListener {
+            val intent = Intent(this, PersonalizationActivity::class.java)
+            startActivity(intent)
+        }
 
         btnVider.setOnClickListener {
             cafeNumber.text = "0"
@@ -77,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             countCroissant = 0
             total = 0.0
             prixTotal.text = "0.0"
+            edtNomClient.text.clear()
             Toast.makeText(this, "Commande annulée", Toast.LENGTH_SHORT).show()
         }
 

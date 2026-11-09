@@ -213,17 +213,28 @@
         app:layout_constraintTop_toTopOf="@id/lblCroissant"
         app:tint="@color/black" />
 
+    <Button
+        android:id="@+id/btnPersonaliser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Personaliser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblCroissant" />
+
     <TextView
         android:id="@+id/lblClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:text="Nom du client"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lblCroissant" />
+        app:layout_constraintTop_toBottomOf="@id/btnPersonaliser" />
 
     <EditText
         android:id="@+id/edtNomClient"
