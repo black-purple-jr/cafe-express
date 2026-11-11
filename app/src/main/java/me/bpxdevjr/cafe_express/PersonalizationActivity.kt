@@ -24,6 +24,7 @@ class PersonalizationActivity : AppCompatActivity() {
     private lateinit var txtPrixTotal: TextView
 
     private lateinit var btnCalculer: Button
+    private lateinit var btnRetour: Button
 
     private var total: Int = 0
 
@@ -46,9 +47,9 @@ class PersonalizationActivity : AppCompatActivity() {
         txtPrixTotal = findViewById(R.id.txtPrixTotal)
 
         btnCalculer = findViewById(R.id.btnCalculer)
+        btnRetour = findViewById(R.id.btnRetour)
 
-        val laits: List<String> =
-            listOf("Lait entier", "Lait écrémé", "Lait d'amandes (+3 DH)", "Sans lait")
+        val laits: List<String> = listOf("Lait entier", "Lait écrémé", "Lait d'amandes (+3 DH)", "Sans lait")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, laits)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnLait.adapter = adapter
@@ -122,11 +123,14 @@ class PersonalizationActivity : AppCompatActivity() {
 
             total = prixTaille + prixCreme + prixCaramelle + prixEmporter + prixLait
 
-            txtResultPhrase.text =
-                "${taille}, ${supplements.joinToString(", ")}, ${spinnerItem} ${txtAEmporter}."
+            txtResultPhrase.text = "${taille}, ${supplements.joinToString(", ")}, ${spinnerItem} ${txtAEmporter}."
             txtPrixTotal.text = "Prix ${total} DH"
 
 
+        }
+
+        btnRetour.setOnClickListener {
+            finish()
         }
 
     }
