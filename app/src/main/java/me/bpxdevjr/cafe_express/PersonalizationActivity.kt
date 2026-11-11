@@ -8,24 +8,24 @@ import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat as Switch
+import androidx.appcompat.widget.SwitchCompat
 
 class PersonalizationActivity : AppCompatActivity() {
 
-
     private lateinit var rgTaille: RadioGroup
-
     private lateinit var cbSucre: CheckBox
     private lateinit var cbCreme: CheckBox
     private lateinit var cbCaramelle: CheckBox
 
-    private lateinit var aEmporter: Switch
+    private lateinit var aEmporter: SwitchCompat
     private lateinit var spnLait: Spinner
 
     private lateinit var txtResultPhrase: TextView
     private lateinit var txtPrixTotal: TextView
 
     private lateinit var btnCalculer: Button
+
+    private var total: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +52,84 @@ class PersonalizationActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, laits)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnLait.adapter = adapter
+
+        // implémentation du logic du calcul
+
+        reset()
+
+        btnCalculer.setOnClickListener {
+            val rbTailleChoisi = rgTaille.checkedRadioButtonId
+
+            val taille = when (rbTailleChoisi) {
+                R.id.rbPetit -> "Petit"
+                R.id.rbMoyen -> "Moyen"
+                R.id.rbGrand -> "Grand"
+                else -> "aucune"
+            }
+
+            var prixTaille = when (taille) {
+                "Petit" -> 8
+                "Moyen" -> 10
+                "Grand" -> 12
+                else -> 0
+            }
+
+            total += prixTaille
+
+            val supplements: MutableList<String> = mutableListOf()
+
+            if (cbSucre.isChecked) {
+                supplements.add("Sucre")
+            }
+            if (cbCreme.isChecked) {
+                supplements.add("Creme")
+                total += 2
+            }
+            if (cbCaramelle.isChecked) {
+                supplements.add("Caramelle")
+                total++
+            }
+
+            var txtAEmporter: String = ""
+
+            if (aEmporter.isChecked) {
+                total += 2
+                txtAEmporter = "à emporter"
+            }
+
+            val prixLaits: List<Int> = listOf(0, 0, 3, 0)
+
+            val position = spnLait.selectedItemPosition
+            val spinnerItem = spnLait.selectedItem.toString()
+
+
+            if (position == 2) {
+                total += 3
+            }
+
+            txtResultPhrase.text = "${taille}, ${supplements.joinToString(", ")}, ${spinnerItem} ${txtAEmporter}."
+            txtPrixTotal.text = "Prix ${total} DH"
+
+
+        }
+
+    }
+
+    fun reset () {
+        rgTaille.check(R.id.rbMoyen)
+
+        cbSucre.isChecked = false
+        cbCreme.isChecked = false
+        cbCaramelle.isChecked = false
+
+        aEmporter.isChecked = false
+
+        spnLait.setSelection(0)
+
+        txtResultPhrase.text = ""
+        txtPrixTotal.text = "Prix : 0 DH"
+
+        total = 0
 
     }
 }
