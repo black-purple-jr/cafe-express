@@ -55,8 +55,6 @@ class PersonalizationActivity : AppCompatActivity() {
 
         // implémentation du logic du calcul
 
-        reset()
-
         btnCalculer.setOnClickListener {
             val rbTailleChoisi = rgTaille.checkedRadioButtonId
 
@@ -78,22 +76,29 @@ class PersonalizationActivity : AppCompatActivity() {
 
             val supplements: MutableList<String> = mutableListOf()
 
+
+
             if (cbSucre.isChecked) {
                 supplements.add("Sucre")
             }
+
+            var prixCreme = 0
             if (cbCreme.isChecked) {
                 supplements.add("Creme")
-                total += 2
+                prixCreme = 2
             }
+
+            var prixCaramelle = 0
             if (cbCaramelle.isChecked) {
                 supplements.add("Caramelle")
-                total++
+                prixCaramelle = 1
             }
 
             var txtAEmporter: String = ""
+            var prixEmporter = 0
 
             if (aEmporter.isChecked) {
-                total += 2
+                prixEmporter = 2
                 txtAEmporter = "à emporter"
             }
 
@@ -102,12 +107,23 @@ class PersonalizationActivity : AppCompatActivity() {
             val position = spnLait.selectedItemPosition
             val spinnerItem = spnLait.selectedItem.toString()
 
+            var prixLait = when (spinnerItem) {
+                "Lait entier" -> 0
+                "Lait écrémé" -> 0
+                "Lait d'amandes (+3 DH)" -> 3
+                "Sans lait" -> 0
+                else -> 0
+            }
+
 
             if (position == 2) {
                 total += 3
             }
 
-            txtResultPhrase.text = "${taille}, ${supplements.joinToString(", ")}, ${spinnerItem} ${txtAEmporter}."
+            total = prixTaille + prixCreme + prixCaramelle + prixEmporter + prixLait
+
+            txtResultPhrase.text =
+                "${taille}, ${supplements.joinToString(", ")}, ${spinnerItem} ${txtAEmporter}."
             txtPrixTotal.text = "Prix ${total} DH"
 
 
@@ -115,21 +131,4 @@ class PersonalizationActivity : AppCompatActivity() {
 
     }
 
-    fun reset () {
-        rgTaille.check(R.id.rbMoyen)
-
-        cbSucre.isChecked = false
-        cbCreme.isChecked = false
-        cbCaramelle.isChecked = false
-
-        aEmporter.isChecked = false
-
-        spnLait.setSelection(0)
-
-        txtResultPhrase.text = ""
-        txtPrixTotal.text = "Prix : 0 DH"
-
-        total = 0
-
-    }
 }
